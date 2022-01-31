@@ -4,7 +4,7 @@
         <div>
             <template v-if="uuid">
                 <img :src="selectedThumbUrl" alt="" />
-                <button @click="openThumbnail" class="btn btn-default btn-primary inline-flex">
+                <button @click.prevent="openThumbnail" type="button" class="btn btn-default btn-primary inline-flex">
                     Change Thumbnail
                 </button>
             </template>
@@ -13,7 +13,7 @@
     </template>
     <thumbnail-picker 
         v-model="value" 
-        :open="openThumbnail" 
+        :open="isOpen" 
         @close="isOpen = false"
     />
   </default-field>

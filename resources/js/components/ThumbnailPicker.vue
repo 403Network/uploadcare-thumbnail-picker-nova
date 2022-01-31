@@ -27,6 +27,7 @@
 import helpers from '../helpers';
 
 export default {
+    props: ['open', 'value'],
     data() {
         return {
             newThumbId: null,

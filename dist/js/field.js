@@ -27433,6 +27433,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['open', 'value'],
     data: function data() {
         return {
             newThumbId: null
@@ -40022,7 +40023,13 @@ var render = function() {
                     "button",
                     {
                       staticClass: "btn btn-default btn-primary inline-flex",
-                      on: { click: _vm.openThumbnail }
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.openThumbnail.apply(null, arguments)
+                        }
+                      }
                     },
                     [
                       _vm._v(
@@ -40038,7 +40045,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("thumbnail-picker", {
-        attrs: { open: _vm.openThumbnail },
+        attrs: { open: _vm.isOpen },
         on: {
           close: function($event) {
             _vm.isOpen = false
