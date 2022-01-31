@@ -45,7 +45,7 @@ export default {
         thumbUrl () {
             return helpers.thumbUrl(this.uuid, this.selectedThumbId);
         },
-        cancel (value) {
+        close (value) {
             this.$emit('close')
             this.newThumbId = null;
         },

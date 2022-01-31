@@ -27453,7 +27453,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         thumbUrl: function thumbUrl() {
             return __WEBPACK_IMPORTED_MODULE_0__helpers__["a" /* default */].thumbUrl(this.uuid, this.selectedThumbId);
         },
-        cancel: function cancel(value) {
+        close: function close(value) {
             this.$emit('close');
             this.newThumbId = null;
         },
