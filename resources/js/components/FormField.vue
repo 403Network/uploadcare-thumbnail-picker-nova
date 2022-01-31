@@ -4,7 +4,9 @@
         <div>
             <template v-if="uuid">
                 <img :src="selectedThumbUrl" alt="" />
-                <button @click="openThumbnail" />
+                <button @click="openThumbnail" class="btn btn-default btn-primary inline-flex">
+                    Change Thumbnail
+                </button>
             </template>
             <div v-else>No Video available</div>
         </div>

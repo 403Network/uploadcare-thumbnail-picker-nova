@@ -474,6 +474,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -40016,7 +40018,18 @@ var render = function() {
               ? [
                   _c("img", { attrs: { src: _vm.selectedThumbUrl, alt: "" } }),
                   _vm._v(" "),
-                  _c("button", { on: { click: _vm.openThumbnail } })
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-default btn-primary inline-flex",
+                      on: { click: _vm.openThumbnail }
+                    },
+                    [
+                      _vm._v(
+                        "\n                  Change Thumbnail\n              "
+                      )
+                    ]
+                  )
                 ]
               : _c("div", [_vm._v("No Video available")])
           ],
