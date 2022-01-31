@@ -13,10 +13,10 @@ class UploadcareThumbnailPicker extends Field
      */
     public $component = 'uploadcare-thumbnail-picker';
 
-    public function dependsOn($field, $value)
+    public function dependsOn($field)
     {
         return $this->withMeta([
-            'dependency' => $this->getFieldLayout($field, $value),
+            'dependency' => $field,
         ]);
     }
 }
