@@ -32,7 +32,6 @@ export default {
             isOpen: false,
             dependenciesSatisfied: true,
             dependencyValues: {},
-            uuid: '',
             videoUrl: '',
         }
     },
@@ -43,6 +42,10 @@ export default {
         },
         splitVideoUrl () {
             return (this.videoUrl || '').split('/') || []
+        },
+
+        uuid () {
+            return this.videoUrl.split('/')[3]
         },
         dependency () {
             return this.field.dependency || '';

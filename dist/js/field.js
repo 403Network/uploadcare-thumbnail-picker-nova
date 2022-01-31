@@ -481,147 +481,149 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: { ThumbnailPicker: __WEBPACK_IMPORTED_MODULE_1__ThumbnailPicker_vue___default.a },
-  mixins: [__WEBPACK_IMPORTED_MODULE_0_laravel_nova__["FormField"], __WEBPACK_IMPORTED_MODULE_0_laravel_nova__["HandlesValidationErrors"]],
+    components: { ThumbnailPicker: __WEBPACK_IMPORTED_MODULE_1__ThumbnailPicker_vue___default.a },
+    mixins: [__WEBPACK_IMPORTED_MODULE_0_laravel_nova__["FormField"], __WEBPACK_IMPORTED_MODULE_0_laravel_nova__["HandlesValidationErrors"]],
 
-  data: function data() {
-    return {
-      isOpen: false,
-      dependenciesSatisfied: true,
-      dependencyValues: {},
-      uuid: '',
-      videoUrl: ''
-    };
-  },
+    data: function data() {
+        return {
+            isOpen: false,
+            dependenciesSatisfied: true,
+            dependencyValues: {},
+            videoUrl: ''
+        };
+    },
 
-  props: ['resourceName', 'resourceId', 'field'],
-  computed: {
-    dv: function dv() {
-      return this.dependencyValues;
-    },
-    splitVideoUrl: function splitVideoUrl() {
-      return (this.videoUrl || '').split('/') || [];
-    },
-    dependency: function dependency() {
-      return this.field.dependency || '';
-    },
-    selectedThumbUrl: function selectedThumbUrl() {
-      return __WEBPACK_IMPORTED_MODULE_2__helpers__["a" /* default */].thumbUrl(this.uuid, this.value);
-    }
-  },
-  watch: {
-    dependencyValues: {
-      deep: true,
-      handler: function handler(to, from) {
-        console.log('dependencyValues updated');
-        console.log(to);
-        console.log(this.field.dependency);
-        if (to[this.field.dependency]) {
-          console.log(to[this.field.dependency]);
-          this.uuid = (to[this.field.dependency] || '').split('/')[3];
+    props: ['resourceName', 'resourceId', 'field'],
+    computed: {
+        dv: function dv() {
+            return this.dependencyValues;
+        },
+        splitVideoUrl: function splitVideoUrl() {
+            return (this.videoUrl || '').split('/') || [];
+        },
+        uuid: function uuid() {
+            return this.videoUrl.split('/')[3];
+        },
+        dependency: function dependency() {
+            return this.field.dependency || '';
+        },
+        selectedThumbUrl: function selectedThumbUrl() {
+            return __WEBPACK_IMPORTED_MODULE_2__helpers__["a" /* default */].thumbUrl(this.uuid, this.value);
         }
-      }
-    }
-  },
-
-  methods: {
-    /*
-     * Set the initial, internal value for the field.
-     */
-    setInitialValue: function setInitialValue() {
-      this.value = this.field.value || '';
     },
-
-
-    /**
-     * Fill the given FormData object with the field's internal value.
-     */
-    fill: function fill(formData) {
-      formData.append(this.field.attribute, this.value || '');
-    },
-
-
-    // @todo: refactor entire watcher procedure, this approach isn't maintainable ..
-    registerDependencyWatchers: function registerDependencyWatchers(root, callback) {
-      var _this = this;
-
-      console.info('mounted');
-      callback = callback || null;
-      root.$children.forEach(function (component) {
-        console.info(component);
-        if (_this.componentIsDependency(component)) {
-
-          // @todo: change `findWatchableComponentAttribute` to return initial state(s) of current dependency.
-          var attribute = _this.findWatchableComponentAttribute(component),
-              initial_value = component.field.value; // @note: quick-fix for issue #88
-
-          component.$watch(attribute, function (value) {
-            // @todo: move to reactive factory
-            if (attribute === 'selectedResource') {
-              value = value && value.value || null;
+    watch: {
+        dependencyValues: {
+            deep: true,
+            handler: function handler(to, from) {
+                console.log('dependencyValues updated');
+                console.log(to);
+                console.log(this.field.dependency);
+                if (to[this.field.dependency]) {
+                    console.log(to[this.field.dependency]);
+                    this.uuid = (to[this.field.dependency] || '').split('/')[3];
+                }
             }
-            console.log('updating', value);
-            _this.videoUrl = value;
-
-            __WEBPACK_IMPORTED_MODULE_3_vue___default.a.set(_this.dependencyValues, component.field.attribute, value);
-            // @todo: change value as argument for `updateDependencyStatus`
-            _this.updateDependencyStatus();
-          }, { immediate: true });
-
-          // @todo: move to initial state
-          // @note quick-fix for issue #88
-          if (attribute === 'fieldTypeName') {
-            initial_value = component.field.resourceLabel;
-          }
-
-          // @todo: replace with `updateDependencyStatus(initial_value)` and let it resolve dependency state
-          console.log('initial_value', initial_value);
-          __WEBPACK_IMPORTED_MODULE_3_vue___default.a.set(_this.dependencyValues, component.field.attribute, initial_value);
         }
-
-        _this.registerDependencyWatchers(component);
-      });
-
-      if (callback !== null) {
-        callback.call(this);
-      }
-    },
-    componentIsDependency: function componentIsDependency(component) {
-      if (component.field === undefined) {
-        return false;
-      }
-      console.info(component.field.attribute);
-      if (component.field.attribute === this.field.dependency) {
-        console.info(true);
-        return true;
-      }
-      return false;
     },
 
-    // @todo: not maintainable, move to factory
-    findWatchableComponentAttribute: function findWatchableComponentAttribute(component) {
-      var attribute = void 0;
-      switch (component.field.component) {
-        case 'belongs-to-many-field':
-        case 'belongs-to-field':
-          attribute = 'selectedResource';
-          break;
-        case 'morph-to-field':
-          attribute = 'fieldTypeName';
-          break;
-        default:
-          attribute = 'value';
-      }
-      return attribute;
+    methods: {
+        /*
+         * Set the initial, internal value for the field.
+         */
+        setInitialValue: function setInitialValue() {
+            this.value = this.field.value || '';
+        },
+
+
+        /**
+         * Fill the given FormData object with the field's internal value.
+         */
+        fill: function fill(formData) {
+            formData.append(this.field.attribute, this.value || '');
+        },
+
+
+        // @todo: refactor entire watcher procedure, this approach isn't maintainable ..
+        registerDependencyWatchers: function registerDependencyWatchers(root, callback) {
+            var _this = this;
+
+            console.info('mounted');
+            callback = callback || null;
+            root.$children.forEach(function (component) {
+                console.info(component);
+                if (_this.componentIsDependency(component)) {
+
+                    // @todo: change `findWatchableComponentAttribute` to return initial state(s) of current dependency.
+                    var attribute = _this.findWatchableComponentAttribute(component),
+                        initial_value = component.field.value; // @note: quick-fix for issue #88
+
+                    component.$watch(attribute, function (value) {
+                        // @todo: move to reactive factory
+                        if (attribute === 'selectedResource') {
+                            value = value && value.value || null;
+                        }
+                        console.log('updating', value);
+                        _this.videoUrl = value;
+
+                        __WEBPACK_IMPORTED_MODULE_3_vue___default.a.set(_this.dependencyValues, component.field.attribute, value);
+                        // @todo: change value as argument for `updateDependencyStatus`
+                        _this.updateDependencyStatus();
+                    }, { immediate: true });
+
+                    // @todo: move to initial state
+                    // @note quick-fix for issue #88
+                    if (attribute === 'fieldTypeName') {
+                        initial_value = component.field.resourceLabel;
+                    }
+
+                    // @todo: replace with `updateDependencyStatus(initial_value)` and let it resolve dependency state
+                    console.log('initial_value', initial_value);
+                    __WEBPACK_IMPORTED_MODULE_3_vue___default.a.set(_this.dependencyValues, component.field.attribute, initial_value);
+                }
+
+                _this.registerDependencyWatchers(component);
+            });
+
+            if (callback !== null) {
+                callback.call(this);
+            }
+        },
+        componentIsDependency: function componentIsDependency(component) {
+            if (component.field === undefined) {
+                return false;
+            }
+            console.info(component.field.attribute);
+            if (component.field.attribute === this.field.dependency) {
+                console.info(true);
+                return true;
+            }
+            return false;
+        },
+
+        // @todo: not maintainable, move to factory
+        findWatchableComponentAttribute: function findWatchableComponentAttribute(component) {
+            var attribute = void 0;
+            switch (component.field.component) {
+                case 'belongs-to-many-field':
+                case 'belongs-to-field':
+                    attribute = 'selectedResource';
+                    break;
+                case 'morph-to-field':
+                    attribute = 'fieldTypeName';
+                    break;
+                default:
+                    attribute = 'value';
+            }
+            return attribute;
+        },
+        updateDependencyStatus: function updateDependencyStatus() {}
     },
-    updateDependencyStatus: function updateDependencyStatus() {}
-  },
-  mounted: function mounted() {
-    console.info('mounted');
-    this.registerDependencyWatchers(this.$root, function () {
-      this.updateDependencyStatus();
-    });
-  }
+    mounted: function mounted() {
+        console.info('mounted');
+        this.registerDependencyWatchers(this.$root, function () {
+            this.updateDependencyStatus();
+        });
+    }
 });
 
 /***/ }),
