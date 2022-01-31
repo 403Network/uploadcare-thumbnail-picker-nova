@@ -1,6 +1,6 @@
 <template>
     <div class="uc-thumb-wrapper" v-show="open" @click="close">
-        <div class="uc-thumb-picker">
+        <div class="uc-thumb-picker" @click.stop>
             <div class="uc-header">
                 <h3>Pick Thumbnail</h3>
                 <div>

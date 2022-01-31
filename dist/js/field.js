@@ -27493,71 +27493,82 @@ var render = function() {
       on: { click: _vm.close }
     },
     [
-      _c("div", { staticClass: "uc-thumb-picker" }, [
-        _c("div", { staticClass: "uc-header" }, [
-          _c("h3", [_vm._v("Pick Thumbnail")]),
-          _vm._v(" "),
-          _c("div", [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-default inline-flex btn-warning",
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.close.apply(null, arguments)
-                  }
-                }
-              },
-              [_vm._v("Cancel")]
-            ),
+      _c(
+        "div",
+        {
+          staticClass: "uc-thumb-picker",
+          on: {
+            click: function($event) {
+              $event.stopPropagation()
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "uc-header" }, [
+            _c("h3", [_vm._v("Pick Thumbnail")]),
             _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-default inline-flex btn-primary",
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.save.apply(null, arguments)
+            _c("div", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-default inline-flex btn-warning",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.close.apply(null, arguments)
+                    }
                   }
-                }
-              },
-              [_vm._v("Save")]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "uc-thumb-list" },
-          _vm._l(50, function(thumb, index) {
-            return _c(
-              "div",
-              {
-                key: index,
-                staticClass: "uc-thumb",
-                class: [
-                  index === _vm.selectedThumbId ? "uc-thumb--selected" : "",
-                  index === _vm.newThumbId ? "uc-thumb--new" : ""
-                ],
-                on: {
-                  click: function() {
-                    return (_vm.newThumbId = index)
+                },
+                [_vm._v("Cancel")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-default inline-flex btn-primary",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.save.apply(null, arguments)
+                    }
                   }
-                }
-              },
-              [
-                _c("img", {
-                  staticClass: "uc-thumb-img",
-                  attrs: { src: _vm.thumbUrl(index), alt: "" }
-                })
-              ]
-            )
-          }),
-          0
-        )
-      ])
+                },
+                [_vm._v("Save")]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "uc-thumb-list" },
+            _vm._l(50, function(thumb, index) {
+              return _c(
+                "div",
+                {
+                  key: index,
+                  staticClass: "uc-thumb",
+                  class: [
+                    index === _vm.selectedThumbId ? "uc-thumb--selected" : "",
+                    index === _vm.newThumbId ? "uc-thumb--new" : ""
+                  ],
+                  on: {
+                    click: function() {
+                      return (_vm.newThumbId = index)
+                    }
+                  }
+                },
+                [
+                  _c("img", {
+                    staticClass: "uc-thumb-img",
+                    attrs: { src: _vm.thumbUrl(index), alt: "" }
+                  })
+                ]
+              )
+            }),
+            0
+          )
+        ]
+      )
     ]
   )
 }
