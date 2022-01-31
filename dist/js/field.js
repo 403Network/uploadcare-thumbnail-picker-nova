@@ -457,7 +457,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data: function data() {
 		return {
 			isOpen: false,
-			dependenciesSatisfied: true
+			dependenciesSatisfied: true,
+			dependencyValues: {}
 		};
 	},
 
@@ -551,6 +552,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			return attribute;
 		},
 		updateDependencyStatus: function updateDependencyStatus() {}
+	},
+	mounted: function mounted() {
+
+		this.registerDependencyWatchers(this.$root, function () {
+			this.updateDependencyStatus();
+		});
 	}
 });
 

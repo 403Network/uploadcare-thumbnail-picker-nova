@@ -30,6 +30,7 @@ export default {
         return {
             isOpen: false,
             dependenciesSatisfied: true,
+            dependencyValues: {},
         }
     },
   props: ['resourceName', 'resourceId', 'field'],
@@ -118,9 +119,15 @@ export default {
 				return attribute;
 			},
             updateDependencyStatus () {
-                
+
             }
 
   },
+  mounted () {
+
+			this.registerDependencyWatchers(this.$root, function() {
+				this.updateDependencyStatus();
+			});
+  }
 }
 </script>
