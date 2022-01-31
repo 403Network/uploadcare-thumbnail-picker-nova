@@ -1,6 +1,6 @@
 <?php
 
-namespace Fourzerothree\UploadcareThumbnailPickerNova;
+namespace FourZeroThree\UploadcareThumbnailPickerNova;
 
 use Laravel\Nova\Fields\Field;
 

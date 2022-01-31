@@ -1,6 +1,6 @@
 <?php
 
-namespace Fourzerothree\UploadcareThumbnailPickerNova;
+namespace FourZeroThree\UploadcareThumbnailPickerNova;
 
 use Illuminate\Support\ServiceProvider;
 use Laravel\Nova\Events\ServingNova;
