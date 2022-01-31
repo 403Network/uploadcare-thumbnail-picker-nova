@@ -29,7 +29,7 @@ class FieldServiceProvider extends ServiceProvider
         }
 
         Route::middleware(['nova'])
-                ->prefix('nova-vendor/UploadcareThumbnailPicker')
+                ->prefix('nova-vendor/FourZeroThree/UploadcareThumbnailPicker')
                 ->group(__DIR__.'/../routes/api.php');
     }
 
