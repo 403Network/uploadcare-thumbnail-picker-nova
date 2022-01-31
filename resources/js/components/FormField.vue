@@ -41,7 +41,7 @@ export default {
             return this.dependencyValues
         },
         splitVideoUrl () {
-            return this.videoUrl.split('/') || []
+            return (this.videoUrl || '').split('/') || []
         },
         videoUrl ()  {
             return this.dependencyValues[this.dependency]

@@ -499,7 +499,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return this.dependencyValues;
         },
         splitVideoUrl: function splitVideoUrl() {
-            return this.videoUrl.split('/') || [];
+            return (this.videoUrl || '').split('/') || [];
         },
         videoUrl: function videoUrl() {
             return this.dependencyValues[this.dependency];
