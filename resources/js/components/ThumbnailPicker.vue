@@ -101,8 +101,7 @@ export default {
 }
 .uc-thumb-img {
     display: block;
-    padding: .1rem;
-    border: 3px solid white;
+    border: 1px solid white;
 }
 .uc-thumb-list {
     overflow-y: scroll;
@@ -118,10 +117,12 @@ export default {
     display: block;
     width: 25%;
 }
-.uc-thumb--selected > .uc-thumb-img {
-    border: 3px solid rgb(26, 109, 210);
+.uc-thumb--selected {
+    opacity: 1;
+    filter: grayscale(1);
 }
-.uc-thumb--new > .uc-thumb-img {
-    border: 3px solid rgb(26, 210, 109);
+.uc-thumb--new {
+    opacity: 1;
+    filter: grayscale(0) drop-shadow(2px 4px 6px black);
 }
 </style>
