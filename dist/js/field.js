@@ -40027,7 +40027,7 @@ var render = function() {
                       on: {
                         click: function($event) {
                           $event.preventDefault()
-                          return _vm.openThumbnail.apply(null, arguments)
+                          _vm.isOpen = true
                         }
                       }
                     },

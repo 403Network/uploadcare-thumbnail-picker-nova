@@ -4,7 +4,7 @@
         <div>
             <template v-if="uuid">
                 <img :src="selectedThumbUrl" alt="" />
-                <button @click.prevent="openThumbnail" type="button" class="btn btn-default btn-primary inline-flex">
+                <button @click.prevent="isOpen = true" type="button" class="btn btn-default btn-primary inline-flex">
                     Change Thumbnail
                 </button>
             </template>
