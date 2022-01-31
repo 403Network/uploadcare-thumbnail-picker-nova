@@ -143,5 +143,12 @@ export default {
 }
 .uc-thumb-tag {
     position: absolute;
+    background: black;
+    color: white;
+    margin: 0.5rem;
+    padding: 0.2rem .4\rem;
+    border-radius: 4px;
+    font-weight: bold;
+    box-shadow: 0 0 0px 2px white;
 }
 </style>
