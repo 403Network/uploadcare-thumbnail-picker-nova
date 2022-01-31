@@ -2,7 +2,7 @@
   <default-field :field="field" :errors="errors" :show-help-text="showHelpText">
     <template slot="field">
         <div>
-            <template v-if="uuid">
+            <template v-if="uuid && thumbsReady">
                 <img :src="selectedThumbUrl" alt="" />
                 <button @click.prevent="isOpen = !isOpen" type="button" class="btn btn-default btn-primary inline-flex">
                     Change Thumbnail
@@ -62,10 +62,12 @@ export default {
             immediate: true,
             async handler (to) {
                 if (to) {
+                    this.thumbsReady = false;
                     const { data } = await Nova.request({
                         url: `/nova-api/UploadcareThumbnailPicker/thumb-trigger/${this.uuid}`,
                         method: 'get',
                     });
+                    this.thumbsReady = true;
                 }
             }
         },

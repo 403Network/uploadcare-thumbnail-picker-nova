@@ -532,21 +532,24 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                             switch (_context.prev = _context.next) {
                                 case 0:
                                     if (!to) {
-                                        _context.next = 5;
+                                        _context.next = 7;
                                         break;
                                     }
 
-                                    _context.next = 3;
+                                    this.thumbsReady = false;
+                                    _context.next = 4;
                                     return Nova.request({
                                         url: '/nova-api/UploadcareThumbnailPicker/thumb-trigger/' + this.uuid,
                                         method: 'get'
                                     });
 
-                                case 3:
+                                case 4:
                                     _ref2 = _context.sent;
                                     data = _ref2.data;
 
-                                case 5:
+                                    this.thumbsReady = true;
+
+                                case 7:
                                 case 'end':
                                     return _context.stop();
                             }
@@ -40939,7 +40942,7 @@ var render = function() {
         _c(
           "div",
           [
-            _vm.uuid
+            _vm.uuid && _vm.thumbsReady
               ? [
                   _c("img", { attrs: { src: _vm.selectedThumbUrl, alt: "" } }),
                   _vm._v(" "),
