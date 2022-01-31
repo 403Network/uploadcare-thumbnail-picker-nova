@@ -114,8 +114,7 @@ export default {
 .uc-thumb {
     cursor: pointer;
     display: block;
-    padding: 1rem;
-    width: 20%;
+    width: 25%;
 }
 .uc-thumb--selected > .uc-thumb-img {
     border: 3px solid rgb(26, 109, 210);
