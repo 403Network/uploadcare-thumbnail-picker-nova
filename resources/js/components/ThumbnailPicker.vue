@@ -87,6 +87,7 @@ export default {
 }
 .uc-thumb-img {
     display: block;
+    padding: .1rem;
 }
 .uc-thumb-list {
     overflow-y: scroll;
@@ -103,10 +104,10 @@ export default {
     padding: 1rem;
     width: 20%;
 }
-.uc-thumb--selected {
+.uc-thumb--selected > .uc-thumb-img {
     border: 3px solid rgb(26, 109, 210);
 }
-.uc-thumb--new {
+.uc-thumb--new > .uc-thumb-img {
     border: 3px solid rgb(26, 210, 109);
 }
 </style>
