@@ -27050,7 +27050,7 @@ exports = module.exports = __webpack_require__(17)(false);
 
 
 // module
-exports.push([module.i, "\n.uc-header[data-v-dbe1d802] {\n    padding: 1rem;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n}\n.uc-thumb-wrapper[data-v-dbe1d802] {\n    position: fixed;\n    top: 0;\n    right: 0;\n    left: 0;\n    bottom: 0;\n    z-index: 100;\n    background-color: rgba(0, 0, 0, 0.7);\n    display: block;\n}\n.uc-thumb-picker[data-v-dbe1d802] {\n    background-color: white;\n    border-radius: 4px;\n    position: absolute;\n    top: 10%;\n    bottom: 10%;\n    left: 10%;\n    right: 10%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n}\n.uc-thumb-img[data-v-dbe1d802] {\n    display: block;\n    border: 1px solid white;\n}\n.uc-thumb-list[data-v-dbe1d802] {\n    overflow-y: scroll;\n    bottom: 0;\n    position: relative;\n    max-height: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\n.uc-thumb[data-v-dbe1d802] {\n    cursor: pointer;\n    display: block;\n    width: 25%;\n}\n.uc-thumb--selected[data-v-dbe1d802] {\n    opacity: 1;\n    -webkit-filter: grayscale(1);\n            filter: grayscale(1);\n}\n.uc-thumb--new[data-v-dbe1d802] {\n    opacity: 1;\n    -webkit-filter: grayscale(0) drop-shadow(2px 4px 6px black);\n            filter: grayscale(0) drop-shadow(2px 4px 6px black);\n}\n", ""]);
+exports.push([module.i, "\n.uc-header[data-v-dbe1d802] {\n    padding: 1rem;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n}\n.uc-thumb-wrapper[data-v-dbe1d802] {\n    position: fixed;\n    top: 0;\n    right: 0;\n    left: 0;\n    bottom: 0;\n    z-index: 100;\n    background-color: rgba(0, 0, 0, 0.7);\n    display: block;\n}\n.uc-thumb-picker[data-v-dbe1d802] {\n    background-color: white;\n    border-radius: 4px;\n    position: absolute;\n    top: 10%;\n    bottom: 10%;\n    left: 10%;\n    right: 10%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n}\n.uc-thumb-img[data-v-dbe1d802] {\n    display: block;\n    border: 1px solid white;\n}\n.uc-thumb-list[data-v-dbe1d802] {\n    overflow-y: scroll;\n    bottom: 0;\n    position: relative;\n    max-height: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\n.uc-thumb[data-v-dbe1d802] {\n    cursor: pointer;\n    display: block;\n    width: 25%;\n    opacity: 0.5;\n}\n.uc-thumb--selected[data-v-dbe1d802] {\n    opacity: 1;\n    -webkit-filter: grayscale(1);\n            filter: grayscale(1);\n}\n.uc-thumb--new[data-v-dbe1d802] {\n    opacity: 1;\n    -webkit-filter: grayscale(0) drop-shadow(2px 4px 6px black);\n            filter: grayscale(0) drop-shadow(2px 4px 6px black);\n}\n", ""]);
 
 // exports
 
@@ -27433,6 +27433,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -27450,6 +27451,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     methods: {
+        currentOrNew: function currentOrNew(index) {
+            if (index == this.newThumbId && this.newThumbId == this.selectedThumbId) {
+                return 'Unchanged';
+            } else if (index == this.newThumbId) {
+                return 'New';
+            } else if (index == this.selectedThumbId) {
+                return 'Old';
+            }
+            return null;
+        },
         thumbUrl: function thumbUrl(thumbId) {
             return __WEBPACK_IMPORTED_MODULE_0__helpers__["a" /* default */].thumbUrl(this.uuid, thumbId);
         },
@@ -27563,6 +27574,11 @@ var render = function() {
                   }
                 },
                 [
+                  _c("span", {
+                    staticClass: "uc-thumb-tag",
+                    domProps: { textContent: _vm._s(_vm.currentOrNew(index)) }
+                  }),
+                  _vm._v(" "),
                   _c("img", {
                     staticClass: "uc-thumb-img",
                     attrs: { src: _vm.thumbUrl(index), alt: "" }

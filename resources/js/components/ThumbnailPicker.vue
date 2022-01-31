@@ -19,6 +19,7 @@
                     ]"
                     @click.stop="() => newThumbId = index"
                 >
+                    <span class="uc-thumb-tag" v-if="hasTag(index)" v-text="currentOrNew(index)"/>
                     <img :src="thumbUrl(index)" alt="" class="uc-thumb-img">
                 </div>
             </div>
@@ -42,6 +43,19 @@ export default {
         },
     },
     methods: {
+        hasTag (index) {
+            return Boolean(this.currentOrNew(index))
+        },
+        currentOrNew (index) {
+            if (index == this.newThumbId && this.newThumbId == this.selectedThumbId) {
+                return 'Unchanged';
+            } else if (index == this.newThumbId) {
+                return 'New';
+            } else if (index == this.selectedThumbId) {
+                return 'Old';
+            }
+            return null;
+        },
         thumbUrl (thumbId) {
             return helpers.thumbUrl(this.uuid, thumbId);
         },
@@ -116,6 +130,8 @@ export default {
     cursor: pointer;
     display: block;
     width: 25%;
+    opacity: 0.5;
+    position: relative;
 }
 .uc-thumb--selected {
     opacity: 1;
@@ -124,5 +140,8 @@ export default {
 .uc-thumb--new {
     opacity: 1;
     filter: grayscale(0) drop-shadow(2px 4px 6px black);
+}
+.uc-thumb-tag {
+    position: absolute;
 }
 </style>
