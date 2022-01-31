@@ -27459,11 +27459,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     watch: {
         open: function open(to, from) {
-            if (to) {
-                window.addEventListener('keydown', this.keyDown);
-            } else {
-                window.removeEventListener('keydown', this.keyDown);
-            }
+            // if (to) {
+            //     window.addEventListener('keydown', this.keyDown)
+            // } else {
+            //     window.removeEventListener('keydown', this.keyDown)
+            // }
         }
     }
 });
@@ -40049,7 +40049,9 @@ var render = function() {
                       on: {
                         click: function($event) {
                           $event.preventDefault()
-                          _vm.isOpen = true
+                          return function() {
+                            return (_vm.isOpen = !_vm.isOpen)
+                          }.apply(null, arguments)
                         }
                       }
                     },
@@ -40058,25 +40060,25 @@ var render = function() {
                         "\n                  Change Thumbnail\n              "
                       )
                     ]
-                  )
+                  ),
+                  _vm._v(" "),
+                  _c("thumbnail-picker", {
+                    attrs: { open: _vm.isOpen, uuid: _vm.uuid },
+                    on: {
+                      close: function() {
+                        return (_vm.isOpen = false)
+                      }
+                    },
+                    model: {
+                      value: _vm.value,
+                      callback: function($$v) {
+                        _vm.value = $$v
+                      },
+                      expression: "value"
+                    }
+                  })
                 ]
-              : _c("div", [_vm._v("No Video available")]),
-            _vm._v(" "),
-            _c("thumbnail-picker", {
-              attrs: { open: _vm.isOpen, uuid: _vm.uuid },
-              on: {
-                close: function($event) {
-                  _vm.isOpen = false
-                }
-              },
-              model: {
-                value: _vm.value,
-                callback: function($$v) {
-                  _vm.value = $$v
-                },
-                expression: "value"
-              }
-            })
+              : _c("div", [_vm._v("No Video available")])
           ],
           2
         )

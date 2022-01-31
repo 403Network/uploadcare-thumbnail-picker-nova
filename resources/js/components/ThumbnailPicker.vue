@@ -53,11 +53,11 @@ export default {
     },
     watch: {
         open (to, from) {
-            if (to) {
-                window.addEventListener('keydown', this.keyDown)
-            } else {
-                window.removeEventListener('keydown', this.keyDown)
-            }
+            // if (to) {
+            //     window.addEventListener('keydown', this.keyDown)
+            // } else {
+            //     window.removeEventListener('keydown', this.keyDown)
+            // }
         }
     }
 }
