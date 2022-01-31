@@ -1,10 +1,13 @@
 <template>
   <default-field :field="field" :errors="errors" :show-help-text="showHelpText">
     <template slot="field">
-      <div>
-        <img :src="selectedThumbUrl" alt="" />
-        <button @click="openThumbnail" />
-      </div>
+        <div>
+            <template v-if="uuid">
+                <img :src="selectedThumbUrl" alt="" />
+                <button @click="openThumbnail" />
+            </template>
+            <div v-else>No Video available</div>
+        </div>
     </template>
     <thumbnail-picker 
         v-model="value" 
