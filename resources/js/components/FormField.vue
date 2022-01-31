@@ -96,8 +96,9 @@ export default {
 				if (component.field === undefined) {
 					return false;
 				}
-
+                console.log(component.field.attribute);
                 if (component.field.attribute === (this.field.attribute + this.field.dependency)) {
+                    console.log(true);
                     return true;
                 }
 				return false;

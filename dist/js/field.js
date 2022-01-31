@@ -528,7 +528,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			if (component.field === undefined) {
 				return false;
 			}
-
+			console.log(component.field.attribute);
 			if (component.field.attribute === this.field.attribute + this.field.dependency) {
 				return true;
 			}
