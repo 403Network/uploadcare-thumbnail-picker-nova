@@ -17,14 +17,14 @@ class UploadcareThumbnailController
         }
         return $this->api;
     }
-    public function thumb($uuid, $count)
+    public function thumb($uuid)
     {
         $api = $this->getApi();
         $api->conversion()->convertVideo(
             $uuid,
             (new VideoEncodingRequest())
                 ->setQuality(null)
-                ->setThumbs($count),
+                ->setThumbs(50),
         );
     }
 }

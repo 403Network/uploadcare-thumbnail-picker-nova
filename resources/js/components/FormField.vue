@@ -58,6 +58,17 @@ export default {
         },
     },
     watch: {
+        uuid: {
+            immediate: true,
+            async handler (to) {
+                if (to) {
+                    const { data } = await Nova.request({
+                        url: `/nova-api/UploadcareThumbnailPicker/thumb-trigger/${this.uuid}`,
+                        method: 'get',
+                    });
+                }
+            }
+        },
         dependencyValues: {
             deep: true,
             handler (to, from) {
