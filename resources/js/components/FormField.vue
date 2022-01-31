@@ -36,6 +36,7 @@ export default {
             dependenciesSatisfied: true,
             dependencyValues: {},
             videoUrl: '',
+            ready: false,
         }
     },
   props: ['resourceName', 'resourceId', 'field'],
@@ -59,9 +60,8 @@ export default {
     },
     watch: {
         uuid: {
-            immediate: true,
             async handler (to) {
-                if (to) {
+                if (to && this.ready) {
                     this.thumbsReady = false;
                     const { data } = await Nova.request({
                         url: `/nova-vendor/UploadcareThumbnailPicker/thumb-trigger/${this.uuid}`,
@@ -69,6 +69,7 @@ export default {
                     });
                     this.thumbsReady = true;
                 }
+                this.ready = true;
             }
         },
         dependencyValues: {

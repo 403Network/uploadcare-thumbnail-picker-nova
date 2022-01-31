@@ -498,7 +498,8 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             isOpen: false,
             dependenciesSatisfied: true,
             dependencyValues: {},
-            videoUrl: ''
+            videoUrl: '',
+            ready: false
         };
     },
 
@@ -522,7 +523,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
     },
     watch: {
         uuid: {
-            immediate: true,
             handler: function () {
                 var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(to) {
                     var _ref2, data;
@@ -531,7 +531,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                         while (1) {
                             switch (_context.prev = _context.next) {
                                 case 0:
-                                    if (!to) {
+                                    if (!(to && this.ready)) {
                                         _context.next = 7;
                                         break;
                                     }
@@ -550,6 +550,9 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                     this.thumbsReady = true;
 
                                 case 7:
+                                    this.ready = true;
+
+                                case 8:
                                 case 'end':
                                     return _context.stop();
                             }
