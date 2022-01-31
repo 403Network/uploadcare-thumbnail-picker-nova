@@ -578,6 +578,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                     // @todo: replace with `updateDependencyStatus(initial_value)` and let it resolve dependency state
                     console.log('initial_value', initial_value);
+                    _this.videoUrl = initial_value;
                     __WEBPACK_IMPORTED_MODULE_3_vue___default.a.set(_this.dependencyValues, component.field.attribute, initial_value);
                 }
 

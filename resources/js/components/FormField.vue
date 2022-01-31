@@ -118,6 +118,7 @@ export default {
 
 						// @todo: replace with `updateDependencyStatus(initial_value)` and let it resolve dependency state
                         console.log('initial_value', initial_value);
+                            this.videoUrl = initial_value;
                         Vue.set(this.dependencyValues, component.field.attribute, initial_value);
 					}
 
