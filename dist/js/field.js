@@ -27482,7 +27482,12 @@ var render = function() {
       directives: [
         { name: "show", rawName: "v-show", value: _vm.open, expression: "open" }
       ],
-      staticClass: "uc-thumb-wrapper"
+      staticClass: "uc-thumb-wrapper",
+      on: {
+        click: function($event) {
+          return _vm.$emit("close")
+        }
+      }
     },
     [
       _c("div", { staticClass: "uc-thumb-picker" }, [
@@ -27503,7 +27508,7 @@ var render = function() {
                 staticClass: "uc-thumb",
                 class: [
                   index === _vm.selectedThumbId ? "uc-thumb--selected" : "",
-                  index === _vm.newThumbId ? "uc-thumb--new-selected" : ""
+                  index === _vm.newThumbId ? "uc-thumb--new" : ""
                 ],
                 on: {
                   click: function() {

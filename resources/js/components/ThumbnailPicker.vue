@@ -1,5 +1,5 @@
 <template>
-    <div class="uc-thumb-wrapper" v-show="open">
+    <div class="uc-thumb-wrapper" v-show="open" @click="$emit('close')">
         <div class="uc-thumb-picker">
             <div>
             <h3>Pick Thumbnail</h3>
@@ -12,7 +12,7 @@
                     class="uc-thumb" 
                     :class="[
                         index === selectedThumbId ? 'uc-thumb--selected' : '',
-                        index === newThumbId ? 'uc-thumb--new-selected' : '',
+                        index === newThumbId ? 'uc-thumb--new' : '',
                     ]"
                     @click="() => newThumbId = index"
                 >
