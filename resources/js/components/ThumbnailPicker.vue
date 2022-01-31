@@ -38,7 +38,7 @@ export default {
     },
     computed: {
         selectedThumbId () {
-            return this.value || 0
+            return parseInt(this.value) || 0
         },
     },
     methods: {
@@ -100,6 +100,7 @@ export default {
 .uc-thumb-img {
     display: block;
     padding: .1rem;
+    border: 3px solid white;
 }
 .uc-thumb-list {
     overflow-y: scroll;
