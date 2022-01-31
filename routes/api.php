@@ -15,4 +15,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/thumb-trigger/{uuid}', [UploadcareThumbnailController::class, 'thumb']);
+Route::get('thumb-trigger/{uuid}', [UploadcareThumbnailController::class, 'thumb']);
