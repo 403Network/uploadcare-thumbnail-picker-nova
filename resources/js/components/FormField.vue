@@ -21,6 +21,7 @@
 import { FormField, HandlesValidationErrors } from 'laravel-nova'
 import ThumbnailPicker from './ThumbnailPicker.vue'
 import helpers from '../helpers'
+import Vue from 'vue'
 
 export default {
   components: { ThumbnailPicker },
@@ -36,19 +37,19 @@ export default {
   props: ['resourceName', 'resourceId', 'field'],
     computed: {
         videoUrl ()  {
-            return this.dependencyValues[this.dependency];
+            return this.dependencyValues[this.dependency] || '';
         },
         dependency () {
-            return this.field.dependency;
+            return this.field.dependency || '';
         },
         uuid ()  {
             if (this.videoUrl) {
-                const split = this.videoUrl.split('/');
-                if (split.length >= 4) {
-                    return this.videoUrl.split('/')[3];
+                const splitUrl = this.videoUrl.split('/');
+                if (splitUrl.length >= 4) {
+                    return splitUrl.split('/')[3];
                 }
             }
-            return null;
+            return '';
         },
         selectedThumbUrl () {
             return helpers.thumbUrl(this.uuid, this.value);
@@ -87,7 +88,7 @@ export default {
 							if (attribute === 'selectedResource') {
 								value = (value && value.value) || null;
 							}
-							this.dependencyValues[component.field.attribute] = value;
+                            Vue.set(this.dependencyValues, component.field.attribute, value);
 							// @todo: change value as argument for `updateDependencyStatus`
 							this.updateDependencyStatus()
 						}, {immediate: true});
