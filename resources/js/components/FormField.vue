@@ -43,18 +43,19 @@ export default {
             return this.videoUrl.split('/') || []
         },
         videoUrl ()  {
-            return this.dependencyValues[this.dependency] || '';
+            return this.dependencyValues[this.dependency]
         },
         dependency () {
             return this.field.dependency || '';
         },
         uuid ()  {
-                return this.splitVideoUrl[3]
+            return this.dependencyValues[this.dependency].split('/')[3];
         },
         selectedThumbUrl () {
             return helpers.thumbUrl(this.uuid, this.value);
         },
     },
+
   methods: {
     /*
      * Set the initial, internal value for the field.

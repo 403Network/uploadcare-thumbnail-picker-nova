@@ -501,18 +501,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       return this.videoUrl.split('/') || [];
     },
     videoUrl: function videoUrl() {
-      return this.dependencyValues[this.dependency] || '';
+      return this.dependencyValues[this.dependency];
     },
     dependency: function dependency() {
       return this.field.dependency || '';
     },
     uuid: function uuid() {
-      return this.splitVideoUrl[3];
+      return this.dependencyValues[this.dependency].split('/')[3];
     },
     selectedThumbUrl: function selectedThumbUrl() {
       return __WEBPACK_IMPORTED_MODULE_2__helpers__["a" /* default */].thumbUrl(this.uuid, this.value);
     }
   },
+
   methods: {
     /*
      * Set the initial, internal value for the field.
