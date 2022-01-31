@@ -10,7 +10,8 @@
             </template>
             <div v-else>No Video available</div>
             <thumbnail-picker 
-                v-model="value" 
+                v-model="value"
+                :uuid="uuid"
                 :open="isOpen" 
                 @close="isOpen = false"
             />

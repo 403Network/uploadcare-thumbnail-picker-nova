@@ -27,18 +27,20 @@
 import helpers from '../helpers';
 
 export default {
-    props: ['open', 'value'],
+    props: ['open', 'value', 'uuid'],
     data() {
         return {
             newThumbId: null,
         }
     },
+    computed: {
+        selectedThumbId () {
+            return this.value || 0
+        },
+    },
     methods: {
         thumbUrl () {
             return helpers.thumbUrl(this.uuid, this.selectedThumbId);
-        },
-        selectedThumbId () {
-            return this.value || 0
         },
         close (value) {
             this.$emit('close')

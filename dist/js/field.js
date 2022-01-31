@@ -476,6 +476,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -27433,19 +27434,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['open', 'value'],
+    props: ['open', 'value', 'uuid'],
     data: function data() {
         return {
             newThumbId: null
         };
     },
 
+    computed: {
+        selectedThumbId: function selectedThumbId() {
+            return this.value || 0;
+        }
+    },
     methods: {
         thumbUrl: function thumbUrl() {
             return __WEBPACK_IMPORTED_MODULE_0__helpers__["a" /* default */].thumbUrl(this.uuid, this.selectedThumbId);
-        },
-        selectedThumbId: function selectedThumbId() {
-            return this.value || 0;
         },
         close: function close(value) {
             this.$emit('close');
@@ -40041,7 +40044,7 @@ var render = function() {
               : _c("div", [_vm._v("No Video available")]),
             _vm._v(" "),
             _c("thumbnail-picker", {
-              attrs: { open: _vm.isOpen },
+              attrs: { uuid: _vm.uuid, open: _vm.isOpen },
               on: {
                 close: function($event) {
                   _vm.isOpen = false
