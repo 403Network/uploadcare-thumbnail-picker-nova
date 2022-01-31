@@ -29,6 +29,7 @@ export default {
     data () {
         return {
             isOpen: false,
+            dependenciesSatisfied: true,
         }
     },
   props: ['resourceName', 'resourceId', 'field'],
@@ -51,6 +52,75 @@ export default {
     fill(formData) {
       formData.append(this.field.attribute, this.value || '')
     },
+
+
+			// @todo: refactor entire watcher procedure, this approach isn't maintainable ..
+			registerDependencyWatchers(root, callback) {
+				callback = callback || null;
+				root.$children.forEach(component => {
+					if (this.componentIsDependency(component)) {
+
+						// @todo: change `findWatchableComponentAttribute` to return initial state(s) of current dependency.
+						let attribute = this.findWatchableComponentAttribute(component),
+							initial_value = component.field.value; // @note: quick-fix for issue #88
+
+						component.$watch(attribute, (value) => {
+							// @todo: move to reactive factory
+							if (attribute === 'selectedResource') {
+								value = (value && value.value) || null;
+							}
+							this.dependencyValues[component.field.attribute] = value;
+							// @todo: change value as argument for `updateDependencyStatus`
+							this.updateDependencyStatus()
+						}, {immediate: true});
+
+						// @todo: move to initial state
+						// @note quick-fix for issue #88
+						if (attribute === 'fieldTypeName') {
+							initial_value = component.field.resourceLabel;
+						}
+
+						// @todo: replace with `updateDependencyStatus(initial_value)` and let it resolve dependency state
+						this.dependencyValues[component.field.attribute] = initial_value;
+					}
+
+					this.registerDependencyWatchers(component)
+				});
+
+				if (callback !== null) {
+					callback.call(this);
+				}
+			},
+			componentIsDependency(component) {
+				if (component.field === undefined) {
+					return false;
+				}
+
+                if (component.field.attribute === (this.field.attribute + this.field.dependency)) {
+                    return true;
+                }
+				return false;
+			},
+			// @todo: not maintainable, move to factory
+			findWatchableComponentAttribute(component) {
+				let attribute;
+				switch(component.field.component) {
+					case 'belongs-to-many-field':
+					case 'belongs-to-field':
+						attribute = 'selectedResource';
+						break;
+					case 'morph-to-field':
+						attribute = 'fieldTypeName';
+						break;
+					default:
+						attribute = 'value';
+				}
+				return attribute;
+			},
+            updateDependencyStatus () {
+                
+            }
+
   },
 }
 </script>
