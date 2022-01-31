@@ -515,6 +515,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         dependencyValues: {
             deep: true,
             handler: function handler(to, from) {
+                console.log('dependencyValues updated');
+                console.log(to);
                 if (to[this.field.dependency]) {
                     console.log(to[this.field.dependency]);
                     this.uuid = (to[this.field.dependency] || '').split('/')[3];
