@@ -40085,9 +40085,7 @@ var render = function() {
                       on: {
                         click: function($event) {
                           $event.preventDefault()
-                          return function() {
-                            return (_vm.isOpen = !_vm.isOpen)
-                          }.apply(null, arguments)
+                          _vm.isOpen = !_vm.isOpen
                         }
                       }
                     },
@@ -40101,8 +40099,8 @@ var render = function() {
                   _c("thumbnail-picker", {
                     attrs: { open: _vm.isOpen, uuid: _vm.uuid },
                     on: {
-                      close: function() {
-                        return (_vm.isOpen = false)
+                      close: function($event) {
+                        _vm.isOpen = false
                       }
                     },
                     model: {

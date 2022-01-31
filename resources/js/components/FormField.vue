@@ -4,14 +4,14 @@
         <div>
             <template v-if="uuid">
                 <img :src="selectedThumbUrl" alt="" />
-                <button @click.prevent="() => isOpen = !isOpen" type="button" class="btn btn-default btn-primary inline-flex">
+                <button @click.prevent="isOpen = !isOpen" type="button" class="btn btn-default btn-primary inline-flex">
                     Change Thumbnail
                 </button>
                 <thumbnail-picker 
                     v-model="value"
                     :open="isOpen" 
                     :uuid="uuid"
-                    @close="() => isOpen = false"
+                    @close="isOpen = false"
                 />
             </template>
             <div v-else>No Video available</div>
