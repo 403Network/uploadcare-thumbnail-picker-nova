@@ -46,8 +46,20 @@ export default {
             this.$emit('close')
             this.$emit('input', newId)
             this.newId = null;
-        }
+        },
+        keyDown () {
+            
+        },
     },
+    watch: {
+        open (to, from) {
+            if (to) {
+                window.addEventListener('keydown', this.keyDown)
+            } else {
+                window.removeEventListener('keydown', this.keyDown)
+            }
+        }
+    }
 }
 </script>
 

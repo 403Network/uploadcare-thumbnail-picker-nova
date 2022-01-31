@@ -27454,6 +27454,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$emit('close');
             this.$emit('input', newId);
             this.newId = null;
+        },
+        keyDown: function keyDown() {}
+    },
+    watch: {
+        open: function open(to, from) {
+            if (to) {
+                window.addEventListener('keydown', this.keyDown);
+            } else {
+                window.removeEventListener('keydown', this.keyDown);
+            }
         }
     }
 });
@@ -40044,7 +40054,15 @@ var render = function() {
               : _c("div", [_vm._v("No Video available")]),
             _vm._v(" "),
             _c("thumbnail-picker", {
-              attrs: { uuid: _vm.uuid, open: _vm.isOpen },
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.isOpen,
+                  expression: "isOpen"
+                }
+              ],
+              attrs: { uuid: _vm.uuid },
               on: {
                 close: function($event) {
                   _vm.isOpen = false
