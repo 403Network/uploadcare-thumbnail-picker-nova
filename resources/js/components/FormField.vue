@@ -37,6 +37,7 @@ export default {
             dependencyValues: {},
             videoUrl: '',
             ready: false,
+            thumbsReady: true,
         }
     },
   props: ['resourceName', 'resourceId', 'field'],
@@ -60,7 +61,7 @@ export default {
     },
     watch: {
         uuid: {
-            async handler (to) {
+            async handler (to, from) {
                 if (to && this.ready) {
                     this.thumbsReady = false;
                     const { data } = await Nova.request({

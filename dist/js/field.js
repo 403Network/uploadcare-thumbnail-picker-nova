@@ -499,7 +499,8 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             dependenciesSatisfied: true,
             dependencyValues: {},
             videoUrl: '',
-            ready: false
+            ready: false,
+            thumbsReady: true
         };
     },
 
@@ -524,7 +525,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
     watch: {
         uuid: {
             handler: function () {
-                var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(to) {
+                var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(to, from) {
                     var _ref2, data;
 
                     return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
@@ -560,7 +561,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                     }, _callee, this);
                 }));
 
-                function handler(_x) {
+                function handler(_x, _x2) {
                     return _ref.apply(this, arguments);
                 }
 
