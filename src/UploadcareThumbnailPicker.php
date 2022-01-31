@@ -19,4 +19,11 @@ class UploadcareThumbnailPicker extends Field
             'dependency' => $field,
         ]);
     }
+
+    public function setThumbs(int $thumbs)
+    {
+        $this->withMeta([
+            'thumbs' => $thumbs,
+        ]);
+    }
 }
