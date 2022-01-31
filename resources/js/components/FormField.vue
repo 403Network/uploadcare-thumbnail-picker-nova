@@ -99,7 +99,7 @@ export default {
 					return false;
 				}
                 console.info(component.field.attribute);
-                if (component.field.attribute === (this.field.attribute + this.field.dependency)) {
+                if (component.field.attribute === this.field.dependency) {
                     console.info(true);
                     return true;
                 }
