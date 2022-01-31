@@ -32,6 +32,7 @@ export default {
             isOpen: false,
             dependenciesSatisfied: true,
             dependencyValues: {},
+            uuid: '',
         }
     },
   props: ['resourceName', 'resourceId', 'field'],
@@ -48,12 +49,20 @@ export default {
         dependency () {
             return this.field.dependency || '';
         },
-        uuid ()  {
-            return this.dependencyValues[this.dependency].split('/')[3];
-        },
         selectedThumbUrl () {
             return helpers.thumbUrl(this.uuid, this.value);
         },
+    },
+    watch: {
+        dependencyValues: {
+            deep: true,
+            handler (to, from) {
+                if (to[this.field.dependency]) {    
+                    console.log(to[this.field.dependency]);
+                    this.uuid = to[this.field.dependency].split('/')[3];
+                }
+            }
+        }
     },
 
   methods: {
