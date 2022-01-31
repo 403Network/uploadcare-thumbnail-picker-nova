@@ -35,6 +35,21 @@ export default {
     },
   props: ['resourceName', 'resourceId', 'field'],
     computed: {
+        videoUrl ()  {
+            if (this.dependencyValues.hasOwnProperty(this.field.dependency)) {
+                return this.dependencyValues[this.field.dependency];
+            }
+            return null;
+        },
+        uuid ()  {
+            if (this.videoUrl) {
+                const split = this.videoUrl.split('/');
+                if (split.length >= 4) {
+                    return this.videoUrl.split('/')[3];
+                }
+            }
+            return null;
+        },
         selectedThumbUrl () {
             return helpers.thumbUrl(this.uuid, this.value);
         },
