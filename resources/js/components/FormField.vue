@@ -100,7 +100,7 @@ export default {
 						}
 
 						// @todo: replace with `updateDependencyStatus(initial_value)` and let it resolve dependency state
-						this.dependencyValues[component.field.attribute] = initial_value;
+                        Vue.set(this.dependencyValues, component.field.attribute, initial_value);
 					}
 
 					this.registerDependencyWatchers(component)
