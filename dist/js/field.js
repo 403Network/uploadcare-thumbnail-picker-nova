@@ -517,7 +517,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             handler: function handler(to, from) {
                 if (to[this.field.dependency]) {
                     console.log(to[this.field.dependency]);
-                    this.uuid = to[this.field.dependency].split('/')[3];
+                    this.uuid = (to[this.field.dependency] || '').split('/')[3];
                 }
             }
         }
