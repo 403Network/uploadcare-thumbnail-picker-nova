@@ -40038,27 +40038,27 @@ var render = function() {
                     ]
                   )
                 ]
-              : _c("div", [_vm._v("No Video available")])
+              : _c("div", [_vm._v("No Video available")]),
+            _vm._v(" "),
+            _c("thumbnail-picker", {
+              attrs: { open: _vm.isOpen },
+              on: {
+                close: function($event) {
+                  _vm.isOpen = false
+                }
+              },
+              model: {
+                value: _vm.value,
+                callback: function($$v) {
+                  _vm.value = $$v
+                },
+                expression: "value"
+              }
+            })
           ],
           2
         )
-      ]),
-      _vm._v(" "),
-      _c("thumbnail-picker", {
-        attrs: { open: _vm.isOpen },
-        on: {
-          close: function($event) {
-            _vm.isOpen = false
-          }
-        },
-        model: {
-          value: _vm.value,
-          callback: function($$v) {
-            _vm.value = $$v
-          },
-          expression: "value"
-        }
-      })
+      ])
     ],
     2
   )

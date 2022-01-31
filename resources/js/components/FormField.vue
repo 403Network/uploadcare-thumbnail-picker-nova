@@ -9,13 +9,13 @@
                 </button>
             </template>
             <div v-else>No Video available</div>
+            <thumbnail-picker 
+                v-model="value" 
+                :open="isOpen" 
+                @close="isOpen = false"
+            />
         </div>
     </template>
-    <thumbnail-picker 
-        v-model="value" 
-        :open="isOpen" 
-        @close="isOpen = false"
-    />
   </default-field>
 </template>
 
