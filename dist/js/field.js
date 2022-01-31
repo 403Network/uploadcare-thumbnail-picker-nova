@@ -27487,26 +27487,26 @@ var render = function() {
       _c(
         "div",
         { staticClass: "uc-thumb-list" },
-        _vm._l(50, function(thumb) {
+        _vm._l(50, function(thumb, index) {
           return _c(
             "div",
             {
-              key: thumb,
+              key: index,
               staticClass: "uc-thumb",
               class: [
-                thumb === _vm.selectedThumbId ? "uc-thumb--selected" : "",
-                thumb === _vm.newThumbId ? "uc-thumb--new-selected" : ""
+                index === _vm.selectedThumbId ? "uc-thumb--selected" : "",
+                index === _vm.newThumbId ? "uc-thumb--new-selected" : ""
               ],
               on: {
-                click: function($event) {
-                  _vm.newThumbId = thumb
+                click: function() {
+                  return (_vm.newThumbId = index)
                 }
               }
             },
             [
               _c("img", {
                 staticClass: "uc-thumb-img",
-                attrs: { src: _vm.thumbUrl(thumb), alt: "" }
+                attrs: { src: _vm.thumbUrl(index), alt: "" }
               })
             ]
           )

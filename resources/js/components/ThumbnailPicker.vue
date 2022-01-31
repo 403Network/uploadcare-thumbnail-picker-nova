@@ -7,16 +7,16 @@
             </div>
             <div class="uc-thumb-list">
                 <div 
-                    v-for="thumb in 50" 
-                    :key="thumb" 
+                    v-for="(thumb, index) in 50" 
+                    :key="index" 
                     class="uc-thumb" 
                     :class="[
-                        thumb === selectedThumbId ? 'uc-thumb--selected' : '',
-                        thumb === newThumbId ? 'uc-thumb--new-selected' : '',
+                        index === selectedThumbId ? 'uc-thumb--selected' : '',
+                        index === newThumbId ? 'uc-thumb--new-selected' : '',
                     ]"
-                    @click="newThumbId = thumb"
+                    @click="() => newThumbId = index"
                 >
-                    <img :src="thumbUrl(thumb)" alt="" class="uc-thumb-img">
+                    <img :src="thumbUrl(index)" alt="" class="uc-thumb-img">
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@ export default {
             this.newId = null;
         },
         keyDown () {
-            
+
         },
     },
     watch: {
