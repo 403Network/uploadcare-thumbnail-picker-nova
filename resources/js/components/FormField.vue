@@ -36,6 +36,12 @@ export default {
     },
   props: ['resourceName', 'resourceId', 'field'],
     computed: {
+        dv () {
+            return this.dependencyValues
+        },
+        splitVideoUrl () {
+            return this.videoUrl.split('/') || []
+        },
         videoUrl ()  {
             return this.dependencyValues[this.dependency] || '';
         },
@@ -43,13 +49,7 @@ export default {
             return this.field.dependency || '';
         },
         uuid ()  {
-            if (this.videoUrl) {
-                const splitUrl = this.videoUrl.split('/');
-                if (splitUrl.length >= 4) {
-                    return splitUrl.split('/')[3];
-                }
-            }
-            return '';
+                return this.splitVideoUrl[3]
         },
         selectedThumbUrl () {
             return helpers.thumbUrl(this.uuid, this.value);

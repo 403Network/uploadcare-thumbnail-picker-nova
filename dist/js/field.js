@@ -494,6 +494,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   props: ['resourceName', 'resourceId', 'field'],
   computed: {
+    dv: function dv() {
+      return this.dependencyValues;
+    },
+    splitVideoUrl: function splitVideoUrl() {
+      return this.videoUrl.split('/') || [];
+    },
     videoUrl: function videoUrl() {
       return this.dependencyValues[this.dependency] || '';
     },
@@ -501,13 +507,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       return this.field.dependency || '';
     },
     uuid: function uuid() {
-      if (this.videoUrl) {
-        var splitUrl = this.videoUrl.split('/');
-        if (splitUrl.length >= 4) {
-          return splitUrl.split('/')[3];
-        }
-      }
-      return '';
+      return this.splitVideoUrl[3];
     },
     selectedThumbUrl: function selectedThumbUrl() {
       return __WEBPACK_IMPORTED_MODULE_2__helpers__["a" /* default */].thumbUrl(this.uuid, this.value);
