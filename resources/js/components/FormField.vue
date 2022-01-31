@@ -33,6 +33,7 @@ export default {
             dependenciesSatisfied: true,
             dependencyValues: {},
             uuid: '',
+            videoUrl: '',
         }
     },
   props: ['resourceName', 'resourceId', 'field'],
@@ -42,9 +43,6 @@ export default {
         },
         splitVideoUrl () {
             return (this.videoUrl || '').split('/') || []
-        },
-        videoUrl ()  {
-            return this.dependencyValues[this.dependency]
         },
         dependency () {
             return this.field.dependency || '';
@@ -102,6 +100,7 @@ export default {
 								value = (value && value.value) || null;
 							}
                         console.log('updating', value);
+                            this.videoUrl = value;
 
                             Vue.set(this.dependencyValues, component.field.attribute, value);
 							// @todo: change value as argument for `updateDependencyStatus`
