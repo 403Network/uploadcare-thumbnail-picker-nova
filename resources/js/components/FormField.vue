@@ -101,6 +101,8 @@ export default {
 							if (attribute === 'selectedResource') {
 								value = (value && value.value) || null;
 							}
+                        console.log('updating', value);
+
                             Vue.set(this.dependencyValues, component.field.attribute, value);
 							// @todo: change value as argument for `updateDependencyStatus`
 							this.updateDependencyStatus()
@@ -113,6 +115,7 @@ export default {
 						}
 
 						// @todo: replace with `updateDependencyStatus(initial_value)` and let it resolve dependency state
+                        console.log('initial_value', initial_value);
                         Vue.set(this.dependencyValues, component.field.attribute, initial_value);
 					}
 

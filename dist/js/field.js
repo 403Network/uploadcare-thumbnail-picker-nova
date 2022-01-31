@@ -517,6 +517,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             handler: function handler(to, from) {
                 console.log('dependencyValues updated');
                 console.log(to);
+                console.log(this.field.dependency);
                 if (to[this.field.dependency]) {
                     console.log(to[this.field.dependency]);
                     this.uuid = (to[this.field.dependency] || '').split('/')[3];
@@ -561,6 +562,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         if (attribute === 'selectedResource') {
                             value = value && value.value || null;
                         }
+                        console.log('updating', value);
+
                         __WEBPACK_IMPORTED_MODULE_3_vue___default.a.set(_this.dependencyValues, component.field.attribute, value);
                         // @todo: change value as argument for `updateDependencyStatus`
                         _this.updateDependencyStatus();
@@ -573,6 +576,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }
 
                     // @todo: replace with `updateDependencyStatus(initial_value)` and let it resolve dependency state
+                    console.log('initial_value', initial_value);
                     __WEBPACK_IMPORTED_MODULE_3_vue___default.a.set(_this.dependencyValues, component.field.attribute, initial_value);
                 }
 
