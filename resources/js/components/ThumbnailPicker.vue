@@ -69,13 +69,26 @@ export default {
     bottom: 10%;
     left: 10%;
     right: 10%;
+    display: flex;
+    flex-direction: column;
 }
 .uc-thumb-img {
     display: block;
 }
+.uc-thumb-list {
+    overflow-y: scroll;
+    bottom: 0;
+    position: relative;
+    max-height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 .uc-thumb {
     cursor: pointer;
     display: block;
+    padding: 1rem;
+    width: 20%;
 }
 .uc-thumb--selected {
     border: 3px solid rgb(26, 109, 210);
