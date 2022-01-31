@@ -502,7 +502,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return (this.videoUrl || '').split('/') || [];
         },
         uuid: function uuid() {
-            return this.videoUrl.split('/')[3];
+            return (this.videoUrl || '').split('/')[3] || '';
         },
         dependency: function dependency() {
             return this.field.dependency || '';

@@ -45,7 +45,7 @@ export default {
         },
 
         uuid () {
-            return this.videoUrl.split('/')[3]
+            return (this.videoUrl || '').split('/')[3] || ''
         },
         dependency () {
             return this.field.dependency || '';
