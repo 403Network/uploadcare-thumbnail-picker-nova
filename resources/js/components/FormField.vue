@@ -57,8 +57,10 @@ export default {
 
 			// @todo: refactor entire watcher procedure, this approach isn't maintainable ..
 			registerDependencyWatchers(root, callback) {
+        console.info('mounted');
 				callback = callback || null;
 				root.$children.forEach(component => {
+               console.info(component);
 					if (this.componentIsDependency(component)) {
 
 						// @todo: change `findWatchableComponentAttribute` to return initial state(s) of current dependency.
@@ -96,9 +98,9 @@ export default {
 				if (component.field === undefined) {
 					return false;
 				}
-                console.log(component.field.attribute);
+                console.info(component.field.attribute);
                 if (component.field.attribute === (this.field.attribute + this.field.dependency)) {
-                    console.log(true);
+                    console.info(true);
                     return true;
                 }
 				return false;
@@ -124,11 +126,11 @@ export default {
             }
 
   },
-  mounted () {
-
-			this.registerDependencyWatchers(this.$root, function() {
-				this.updateDependencyStatus();
-			});
+    mounted () {
+        console.info('mounted');
+    this.registerDependencyWatchers(this.$root, function() {
+        this.updateDependencyStatus();
+    });
   }
 }
 </script>

@@ -489,8 +489,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		registerDependencyWatchers: function registerDependencyWatchers(root, callback) {
 			var _this = this;
 
+			console.info('mounted');
 			callback = callback || null;
 			root.$children.forEach(function (component) {
+				console.info(component);
 				if (_this.componentIsDependency(component)) {
 
 					// @todo: change `findWatchableComponentAttribute` to return initial state(s) of current dependency.
@@ -528,8 +530,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			if (component.field === undefined) {
 				return false;
 			}
-			console.log(component.field.attribute);
+			console.info(component.field.attribute);
 			if (component.field.attribute === this.field.attribute + this.field.dependency) {
+				console.info(true);
 				return true;
 			}
 			return false;
@@ -554,7 +557,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		updateDependencyStatus: function updateDependencyStatus() {}
 	},
 	mounted: function mounted() {
-
+		console.info('mounted');
 		this.registerDependencyWatchers(this.$root, function () {
 			this.updateDependencyStatus();
 		});
