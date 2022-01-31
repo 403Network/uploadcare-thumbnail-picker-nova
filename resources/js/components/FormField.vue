@@ -36,10 +36,10 @@ export default {
   props: ['resourceName', 'resourceId', 'field'],
     computed: {
         videoUrl ()  {
-            if (this.dependencyValues.hasOwnProperty(this.field.dependency)) {
-                return this.dependencyValues[this.field.dependency];
-            }
-            return null;
+            return this.dependencyValues[this.dependency];
+        },
+        dependency () {
+            return this.field.dependency;
         },
         uuid ()  {
             if (this.videoUrl) {

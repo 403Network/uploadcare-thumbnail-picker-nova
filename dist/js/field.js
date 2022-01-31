@@ -465,10 +465,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   props: ['resourceName', 'resourceId', 'field'],
   computed: {
     videoUrl: function videoUrl() {
-      if (this.dependencyValues.hasOwnProperty(this.field.dependency)) {
-        return this.dependencyValues[this.field.dependency];
-      }
-      return null;
+      return this.dependencyValues[this.dependency];
+    },
+    dependency: function dependency() {
+      return this.field.dependency;
     },
     uuid: function uuid() {
       if (this.videoUrl) {
