@@ -27050,7 +27050,7 @@ exports = module.exports = __webpack_require__(17)(false);
 
 
 // module
-exports.push([module.i, "\n.uc-thumb-wrapper[data-v-dbe1d802] {\n    position: fixed;\n    top: 0;\n    right: 0;\n    left: 0;\n    bottom: 0;\n    z-index: 100;\n    background-color: rgba(0, 0, 0, 0.7);\n    display: block;\n}\n.uc-thumb-picker[data-v-dbe1d802] {\n    background-color: white;\n    border-radius: 4px;\n    position: absolute;\n    top: 10%;\n    bottom: 10%;\n    left: 10%;\n    right: 10%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n}\n.uc-thumb-img[data-v-dbe1d802] {\n    display: block;\n    padding: .1rem;\n}\n.uc-thumb-list[data-v-dbe1d802] {\n    overflow-y: scroll;\n    bottom: 0;\n    position: relative;\n    max-height: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\n.uc-thumb[data-v-dbe1d802] {\n    cursor: pointer;\n    display: block;\n    padding: 1rem;\n    width: 20%;\n}\n.uc-thumb--selected > .uc-thumb-img[data-v-dbe1d802] {\n    border: 3px solid rgb(26, 109, 210);\n}\n.uc-thumb--new > .uc-thumb-img[data-v-dbe1d802] {\n    border: 3px solid rgb(26, 210, 109);\n}\n", ""]);
+exports.push([module.i, "\n.uc-thumb-header[data-v-dbe1d802] {\n    padding: 1rem;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n}\n.uc-thumb-wrapper[data-v-dbe1d802] {\n    position: fixed;\n    top: 0;\n    right: 0;\n    left: 0;\n    bottom: 0;\n    z-index: 100;\n    background-color: rgba(0, 0, 0, 0.7);\n    display: block;\n}\n.uc-thumb-picker[data-v-dbe1d802] {\n    background-color: white;\n    border-radius: 4px;\n    position: absolute;\n    top: 10%;\n    bottom: 10%;\n    left: 10%;\n    right: 10%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n}\n.uc-thumb-img[data-v-dbe1d802] {\n    display: block;\n    padding: .1rem;\n}\n.uc-thumb-list[data-v-dbe1d802] {\n    overflow-y: scroll;\n    bottom: 0;\n    position: relative;\n    max-height: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\n.uc-thumb[data-v-dbe1d802] {\n    cursor: pointer;\n    display: block;\n    padding: 1rem;\n    width: 20%;\n}\n.uc-thumb--selected > .uc-thumb-img[data-v-dbe1d802] {\n    border: 3px solid rgb(26, 109, 210);\n}\n.uc-thumb--new > .uc-thumb-img[data-v-dbe1d802] {\n    border: 3px solid rgb(26, 210, 109);\n}\n", ""]);
 
 // exports
 
@@ -27430,6 +27430,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -27450,10 +27453,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         thumbUrl: function thumbUrl() {
             return __WEBPACK_IMPORTED_MODULE_0__helpers__["a" /* default */].thumbUrl(this.uuid, this.selectedThumbId);
         },
-        close: function close(value) {
+        cancel: function cancel(value) {
             this.$emit('close');
-            this.$emit('input', newId);
-            this.newId = null;
+            this.newThumbId = null;
+        },
+        save: function save() {
+            this.$emit('close');
+            this.$emit('input', this.newThumbId);
+            this.newThumbId = null;
         },
         keyDown: function keyDown() {}
     },
@@ -27483,18 +27490,26 @@ var render = function() {
         { name: "show", rawName: "v-show", value: _vm.open, expression: "open" }
       ],
       staticClass: "uc-thumb-wrapper",
-      on: {
-        click: function($event) {
-          return _vm.$emit("close")
-        }
-      }
+      on: { click: _vm.close }
     },
     [
       _c("div", { staticClass: "uc-thumb-picker" }, [
-        _c("div", [
+        _c("div", { staticClass: "uc-header" }, [
           _c("h3", [_vm._v("Pick Thumbnail")]),
           _vm._v(" "),
-          _c("button", { on: { click: _vm.save } }, [_vm._v("Save")])
+          _c("div", [
+            _c(
+              "button",
+              { staticClass: "btn btn-warning", on: { click: _vm.close } },
+              [_vm._v("Cancel")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              { staticClass: "btn btn-primary", on: { click: _vm.save } },
+              [_vm._v("Save")]
+            )
+          ])
         ]),
         _vm._v(" "),
         _c(

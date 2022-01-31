@@ -1,9 +1,12 @@
 <template>
-    <div class="uc-thumb-wrapper" v-show="open" @click="$emit('close')">
+    <div class="uc-thumb-wrapper" v-show="open" @click="close">
         <div class="uc-thumb-picker">
-            <div>
-            <h3>Pick Thumbnail</h3>
-                <button @click="save">Save</button>
+            <div class="uc-header">
+                <h3>Pick Thumbnail</h3>
+                <div>
+                    <button @click="close" class="btn btn-warning">Cancel</button>
+                    <button @click="save" class="btn btn-primary">Save</button>
+                </div>
             </div>
             <div class="uc-thumb-list">
                 <div 
@@ -42,10 +45,14 @@ export default {
         thumbUrl () {
             return helpers.thumbUrl(this.uuid, this.selectedThumbId);
         },
-        close (value) {
+        cancel (value) {
             this.$emit('close')
-            this.$emit('input', newId)
-            this.newId = null;
+            this.newThumbId = null;
+        },
+        save () {
+            this.$emit('close')
+            this.$emit('input', this.newThumbId)
+            this.newThumbId = null;
         },
         keyDown () {
 
@@ -64,6 +71,11 @@ export default {
 </script>
 
 <style scoped>
+.uc-thumb-header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
 .uc-thumb-wrapper {
     position: fixed;
     top: 0;
