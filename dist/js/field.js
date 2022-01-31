@@ -27450,8 +27450,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     methods: {
-        thumbUrl: function thumbUrl() {
-            return __WEBPACK_IMPORTED_MODULE_0__helpers__["a" /* default */].thumbUrl(this.uuid, this.selectedThumbId);
+        thumbUrl: function thumbUrl(thumbId) {
+            return __WEBPACK_IMPORTED_MODULE_0__helpers__["a" /* default */].thumbUrl(this.uuid, thumbId);
         },
         close: function close(value) {
             this.$emit('close');

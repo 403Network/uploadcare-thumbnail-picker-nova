@@ -42,8 +42,8 @@ export default {
         },
     },
     methods: {
-        thumbUrl () {
-            return helpers.thumbUrl(this.uuid, this.selectedThumbId);
+        thumbUrl (thumbId) {
+            return helpers.thumbUrl(this.uuid, thumbId);
         },
         close (value) {
             this.$emit('close')
