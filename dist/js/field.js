@@ -209,7 +209,7 @@ var url = 'https://ucarecdn.com/';
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     thumbUrl: function thumbUrl(uuid, thumbId) {
-        return url + uuid + '/video/-/thumbs~50/' + thumbId + '/';
+        return url + uuid + '/video/-/thumbs~50/' + (thumbId || 0) + '/';
     }
 });
 
