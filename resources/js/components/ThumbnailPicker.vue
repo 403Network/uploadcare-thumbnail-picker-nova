@@ -4,8 +4,8 @@
             <div class="uc-header">
                 <h3>Pick Thumbnail</h3>
                 <div>
-                    <button @click="close" class="btn btn-warning">Cancel</button>
-                    <button @click="save" class="btn btn-primary">Save</button>
+                    <button @click.prevent="close" class="btn btn-default inline-flex btn-warning">Cancel</button>
+                    <button @click.prevent="save" class="btn btn-default inline-flex btn-primary">Save</button>
                 </div>
             </div>
             <div class="uc-thumb-list">
@@ -71,7 +71,7 @@ export default {
 </script>
 
 <style scoped>
-.uc-thumb-header {
+.uc-header {
     padding: 1rem;
     display: flex;
     justify-content: space-between;
