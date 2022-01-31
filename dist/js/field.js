@@ -27050,7 +27050,7 @@ exports = module.exports = __webpack_require__(17)(false);
 
 
 // module
-exports.push([module.i, "\n.uc-thumb-wrapper[data-v-dbe1d802] {\n    position: fixed;\n    top: 0;\n    right: 0;\n    left: 0;\n    bottom: 0;\n    z-index: 100;\n    background-color: rgba(0, 0, 0, 0.7);\n}\n.uc-thumb-picker[data-v-dbe1d802] {\n    background-color: white;\n    border-radius: 4px;\n    position: absolute;\n    top: 10%;\n    bottom: 10%;\n    left: 10%;\n    right: 10%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n}\n.uc-thumb-img[data-v-dbe1d802] {\n    display: block;\n}\n.uc-thumb-list[data-v-dbe1d802] {\n    overflow-y: scroll;\n    bottom: 0;\n    position: relative;\n    max-height: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\n.uc-thumb[data-v-dbe1d802] {\n    cursor: pointer;\n    display: block;\n    padding: 1rem;\n    width: 20%;\n}\n.uc-thumb--selected[data-v-dbe1d802] {\n    border: 3px solid rgb(26, 109, 210);\n}\n.uc-thumb--new[data-v-dbe1d802] {\n    border: 3px solid rgb(26, 210, 109);\n}\n", ""]);
+exports.push([module.i, "\n.uc-thumb-wrapper[data-v-dbe1d802] {\n    position: fixed;\n    top: 0;\n    right: 0;\n    left: 0;\n    bottom: 0;\n    z-index: 100;\n    background-color: rgba(0, 0, 0, 0.7);\n    display: block;\n}\n.uc-thumb-picker[data-v-dbe1d802] {\n    background-color: white;\n    border-radius: 4px;\n    position: absolute;\n    top: 10%;\n    bottom: 10%;\n    left: 10%;\n    right: 10%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n}\n.uc-thumb-img[data-v-dbe1d802] {\n    display: block;\n}\n.uc-thumb-list[data-v-dbe1d802] {\n    overflow-y: scroll;\n    bottom: 0;\n    position: relative;\n    max-height: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\n.uc-thumb[data-v-dbe1d802] {\n    cursor: pointer;\n    display: block;\n    padding: 1rem;\n    width: 20%;\n}\n.uc-thumb--selected[data-v-dbe1d802] {\n    border: 3px solid rgb(26, 109, 210);\n}\n.uc-thumb--new[data-v-dbe1d802] {\n    border: 3px solid rgb(26, 210, 109);\n}\n", ""]);
 
 // exports
 
@@ -27476,45 +27476,54 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "uc-thumb-wrapper" }, [
-    _c("div", { staticClass: "uc-thumb-picker" }, [
-      _c("div", [
-        _c("h3", [_vm._v("Pick Thumbnail")]),
+  return _c(
+    "div",
+    {
+      directives: [
+        { name: "show", rawName: "v-show", value: _vm.open, expression: "open" }
+      ],
+      staticClass: "uc-thumb-wrapper"
+    },
+    [
+      _c("div", { staticClass: "uc-thumb-picker" }, [
+        _c("div", [
+          _c("h3", [_vm._v("Pick Thumbnail")]),
+          _vm._v(" "),
+          _c("button", { on: { click: _vm.save } }, [_vm._v("Save")])
+        ]),
         _vm._v(" "),
-        _c("button", { on: { click: _vm.save } }, [_vm._v("Save")])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "uc-thumb-list" },
-        _vm._l(50, function(thumb, index) {
-          return _c(
-            "div",
-            {
-              key: index,
-              staticClass: "uc-thumb",
-              class: [
-                index === _vm.selectedThumbId ? "uc-thumb--selected" : "",
-                index === _vm.newThumbId ? "uc-thumb--new-selected" : ""
-              ],
-              on: {
-                click: function() {
-                  return (_vm.newThumbId = index)
+        _c(
+          "div",
+          { staticClass: "uc-thumb-list" },
+          _vm._l(50, function(thumb, index) {
+            return _c(
+              "div",
+              {
+                key: index,
+                staticClass: "uc-thumb",
+                class: [
+                  index === _vm.selectedThumbId ? "uc-thumb--selected" : "",
+                  index === _vm.newThumbId ? "uc-thumb--new-selected" : ""
+                ],
+                on: {
+                  click: function() {
+                    return (_vm.newThumbId = index)
+                  }
                 }
-              }
-            },
-            [
-              _c("img", {
-                staticClass: "uc-thumb-img",
-                attrs: { src: _vm.thumbUrl(index), alt: "" }
-              })
-            ]
-          )
-        }),
-        0
-      )
-    ])
-  ])
+              },
+              [
+                _c("img", {
+                  staticClass: "uc-thumb-img",
+                  attrs: { src: _vm.thumbUrl(index), alt: "" }
+                })
+              ]
+            )
+          }),
+          0
+        )
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -40054,15 +40063,7 @@ var render = function() {
               : _c("div", [_vm._v("No Video available")]),
             _vm._v(" "),
             _c("thumbnail-picker", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.isOpen,
-                  expression: "isOpen"
-                }
-              ],
-              attrs: { uuid: _vm.uuid },
+              attrs: { open: _vm.isOpen, uuid: _vm.uuid },
               on: {
                 close: function($event) {
                   _vm.isOpen = false

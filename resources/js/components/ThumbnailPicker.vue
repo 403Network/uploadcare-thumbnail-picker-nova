@@ -1,5 +1,5 @@
 <template>
-    <div class="uc-thumb-wrapper">
+    <div class="uc-thumb-wrapper" v-show="open">
         <div class="uc-thumb-picker">
             <div>
             <h3>Pick Thumbnail</h3>
@@ -72,6 +72,7 @@ export default {
     bottom: 0;
     z-index: 100;
     background-color: rgba(0, 0, 0, 0.7);
+    display: block;
 }
 .uc-thumb-picker {
     background-color: white;
