@@ -27511,7 +27511,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-default inline-flex btn-warning",
+                  staticClass: "btn btn-default inline-flex btn-danger mr-3",
                   on: {
                     click: function($event) {
                       $event.preventDefault()
@@ -27552,8 +27552,11 @@ var render = function() {
                     index === _vm.newThumbId ? "uc-thumb--new" : ""
                   ],
                   on: {
-                    click: function() {
-                      return (_vm.newThumbId = index)
+                    click: function($event) {
+                      $event.stopPropagation()
+                      return function() {
+                        return (_vm.newThumbId = index)
+                      }.apply(null, arguments)
                     }
                   }
                 },

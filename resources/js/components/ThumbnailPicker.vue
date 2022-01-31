@@ -4,7 +4,7 @@
             <div class="uc-header">
                 <h3>Pick Thumbnail</h3>
                 <div>
-                    <button @click.prevent="close" class="btn btn-default inline-flex btn-warning">Cancel</button>
+                    <button @click.prevent="close" class="btn btn-default inline-flex btn-danger mr-3">Cancel</button>
                     <button @click.prevent="save" class="btn btn-default inline-flex btn-primary">Save</button>
                 </div>
             </div>
@@ -17,7 +17,7 @@
                         index === selectedThumbId ? 'uc-thumb--selected' : '',
                         index === newThumbId ? 'uc-thumb--new' : '',
                     ]"
-                    @click="() => newThumbId = index"
+                    @click.stop="() => newThumbId = index"
                 >
                     <img :src="thumbUrl(index)" alt="" class="uc-thumb-img">
                 </div>
