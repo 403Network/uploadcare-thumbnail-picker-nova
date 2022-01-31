@@ -64,7 +64,7 @@ export default {
                 if (to) {
                     this.thumbsReady = false;
                     const { data } = await Nova.request({
-                        url: `/nova-api/UploadcareThumbnailPicker/thumb-trigger/${this.uuid}`,
+                        url: `/nova-vendor/UploadcareThumbnailPicker/thumb-trigger/${this.uuid}`,
                         method: 'get',
                     });
                     this.thumbsReady = true;
