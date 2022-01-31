@@ -47,12 +47,11 @@ export default {
         },
         close (value) {
             this.$emit('close')
-            this.newThumbId = null;
+            this.newThumbId = this.selectedThumbId;
         },
         save () {
             this.$emit('close')
-            this.$emit('input', this.newThumbId)
-            this.newThumbId = null;
+            this.$emit('input', this.newThumbId);
         },
         keyDown () {
 
@@ -60,6 +59,9 @@ export default {
     },
     watch: {
         open (to, from) {
+            if (to) {
+                this.newThumbId = this.selectedThumbId;
+            }
             // if (to) {
             //     window.addEventListener('keydown', this.keyDown)
             // } else {

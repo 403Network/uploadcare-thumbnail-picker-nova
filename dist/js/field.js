@@ -27455,17 +27455,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         close: function close(value) {
             this.$emit('close');
-            this.newThumbId = null;
+            this.newThumbId = this.selectedThumbId;
         },
         save: function save() {
             this.$emit('close');
             this.$emit('input', this.newThumbId);
-            this.newThumbId = null;
         },
         keyDown: function keyDown() {}
     },
     watch: {
         open: function open(to, from) {
+            if (to) {
+                this.newThumbId = this.selectedThumbId;
+            }
             // if (to) {
             //     window.addEventListener('keydown', this.keyDown)
             // } else {
