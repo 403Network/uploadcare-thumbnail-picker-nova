@@ -1,5 +1,7 @@
 <template>
-    <panel-item :field="field" />
+    <span>
+        <img :src="thumbUrl(field.value || 0)" alt="" class="uc-thumb-img" style="max-width: 256px"/>
+    </span>
 </template>
 
 <script>
