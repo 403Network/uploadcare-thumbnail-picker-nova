@@ -548,7 +548,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                     this.thumbsReady = false;
                                     _context.next = 4;
                                     return Nova.request({
-                                        url: '/nova-vendor/UploadcareThumbnailPicker/thumb-trigger/' + this.uuid,
+                                        url: '/nova-vendor/FourZeroThree/UploadcareThumbnailPicker/thumb-trigger/' + this.uuid,
                                         method: 'get'
                                     });
 
