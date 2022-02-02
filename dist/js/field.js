@@ -700,6 +700,9 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
     mounted: function mounted() {
         console.info('mounted');
         setInterval(function () {
+            if (!this.uuid) {
+                return;
+            }
             var img = new Image();
             img.onerror = function () {
                 this.thumbsSuccess = false;
@@ -707,7 +710,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             img.onload = function () {
                 this.thumbsSuccess = true;
             };
-            img.src = __WEBPACK_IMPORTED_MODULE_3__helpers__["a" /* default */].thumbUrl(this.uuid, this.value);
+            img.src = __WEBPACK_IMPORTED_MODULE_3__helpers__["a" /* default */].thumbUrl(this.uuid, this.value || 0);
         }, 5000);
         this.registerDependencyWatchers(this.$root, function () {
             this.updateDependencyStatus();
