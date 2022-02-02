@@ -39,7 +39,7 @@ export default {
     },
     computed: {
         selectedThumbId () {
-            return parseInt(this.value) || 0
+            return parseInt(this.value) || 1
         },
     },
     methods: {

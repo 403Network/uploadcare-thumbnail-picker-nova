@@ -205,7 +205,7 @@ export default {
             img.onload = function () {
                 this.thumbsSuccess = true;
             }
-            img.src = helpers.thumbUrl(this.uuid, this.value || 0);
+            img.src = helpers.thumbUrl(this.uuid, this.value || 1);
         }, 5000);
     this.registerDependencyWatchers(this.$root, function() {
         this.updateDependencyStatus();

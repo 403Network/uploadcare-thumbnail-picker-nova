@@ -209,7 +209,7 @@ var url = 'https://ucarecdn.com/';
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     thumbUrl: function thumbUrl(uuid, thumbId) {
-        return url + uuid + '/video/-/thumbs~50/' + (thumbId || 0) + '/';
+        return url + uuid + '/video/-/thumbs~50/' + (thumbId || 1) + '/';
     }
 });
 
@@ -389,7 +389,7 @@ var render = function() {
     _c("img", {
       staticClass: "uc-thumb-img",
       staticStyle: { "max-width": "256px" },
-      attrs: { src: _vm.thumbUrl(_vm.field.value || 0), alt: "" }
+      attrs: { src: _vm.thumbUrl(_vm.field.value || 1), alt: "" }
     })
   ])
 }
@@ -712,7 +712,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             img.onload = function () {
                 this.thumbsSuccess = true;
             };
-            img.src = __WEBPACK_IMPORTED_MODULE_3__helpers__["a" /* default */].thumbUrl(_this2.uuid, _this2.value || 0);
+            img.src = __WEBPACK_IMPORTED_MODULE_3__helpers__["a" /* default */].thumbUrl(_this2.uuid, _this2.value || 1);
         }, 5000);
         this.registerDependencyWatchers(this.$root, function () {
             this.updateDependencyStatus();
@@ -28318,7 +28318,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     computed: {
         selectedThumbId: function selectedThumbId() {
-            return parseInt(this.value) || 0;
+            return parseInt(this.value) || 1;
         }
     },
     methods: {
