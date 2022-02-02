@@ -2,6 +2,9 @@
   <default-field :field="field" :errors="errors" :show-help-text="showHelpText">
     <template slot="field">
         <div>
+            <template v-if="uuid && !thumbsReady">
+                Loading...
+            <template>
             <template v-if="uuid && thumbsReady">
                 <template v-if="!thumbsSuccess">
                     No thumbnails available for this video.<br>
