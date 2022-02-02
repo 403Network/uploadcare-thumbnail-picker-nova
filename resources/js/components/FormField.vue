@@ -3,16 +3,24 @@
     <template slot="field">
         <div>
             <template v-if="uuid && thumbsReady">
-                <img :src="selectedThumbUrl" alt="" />
-                <button @click.prevent="isOpen = !isOpen" type="button" class="btn btn-default btn-primary inline-flex">
-                    Change Thumbnail
-                </button>
-                <thumbnail-picker 
-                    v-model="value"
-                    :open="isOpen" 
-                    :uuid="uuid"
-                    @close="isOpen = false"
-                />
+                <template v-if="!thumbsSuccess">
+                    No thumbnails available for this video.<br>
+                    Thumbnails take a moment to generate for a new video.<br>
+                    Checking for new thumbnails periodically...
+                </template>
+                <template v-else>
+                    <img :src="selectedThumbUrl" alt="" />
+                    <button @click.prevent="isOpen = !isOpen" type="button" class="btn btn-default btn-primary inline-flex">
+                        Change Thumbnail
+                    </button>
+                    <thumbnail-picker
+                        v-model="value"
+                        :open="isOpen" 
+                        :uuid="uuid"
+                        @close="isOpen = false"
+                    />
+
+                </template>
             </template>
             <div v-else>No Video available</div>
         </div>
@@ -38,6 +46,7 @@ export default {
             videoUrl: '',
             ready: false,
             thumbsReady: true,
+            thumbsSuccess: false,
         }
     },
   props: ['resourceName', 'resourceId', 'field'],
@@ -64,6 +73,7 @@ export default {
             async handler (to, from) {
                 if (to && this.ready) {
                     this.thumbsReady = false;
+                    this.thumbsSuccess = false;
                     const { data } = await Nova.request({
                         url: `/nova-vendor/FourZeroThree/UploadcareThumbnailPicker/thumb-trigger/${this.uuid}`,
                         method: 'get',
@@ -181,6 +191,16 @@ export default {
   },
     mounted () {
         console.info('mounted');
+        setInterval(function () {
+            const img = new Image;
+            img.src = helpers.thumbUrl(this.uuid, this.value);
+            img.onerror = function() {
+                this.thumbsSuccess = false;
+            };
+            img.onload = function () {
+                this.thumbsSuccess = true;
+            }
+        }, 5000);
     this.registerDependencyWatchers(this.$root, function() {
         this.updateDependencyStatus();
     });

@@ -17,6 +17,7 @@ class UploadcareThumbnailController
         }
         return $this->api;
     }
+    
     public function thumb($uuid)
     {
         $api = $this->getApi();
