@@ -4,8 +4,8 @@
         <div>
             <template v-if="uuid && !thumbsReady">
                 Loading...
-            <template>
-            <template v-if="uuid && thumbsReady">
+            </template>
+            <template v-else-if="uuid && thumbsReady">
                 <template v-if="!thumbsSuccess">
                     No thumbnails available for this video.<br>
                     Thumbnails take a moment to generate for a new video.<br>

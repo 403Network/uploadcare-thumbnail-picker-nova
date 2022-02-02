@@ -40968,7 +40968,96 @@ process.umask = function() { return 0; };
 /* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function(){},staticRenderFns:[]}
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "default-field",
+    {
+      attrs: {
+        field: _vm.field,
+        errors: _vm.errors,
+        "show-help-text": _vm.showHelpText
+      }
+    },
+    [
+      _c("template", { slot: "field" }, [
+        _c(
+          "div",
+          [
+            _vm.uuid && !_vm.thumbsReady
+              ? [_vm._v("\n              Loading...\n          ")]
+              : _vm.uuid && _vm.thumbsReady
+              ? [
+                  !_vm.thumbsSuccess
+                    ? [
+                        _vm._v(
+                          "\n                  No thumbnails available for this video."
+                        ),
+                        _c("br"),
+                        _vm._v(
+                          "\n                  Thumbnails take a moment to generate for a new video."
+                        ),
+                        _c("br"),
+                        _vm._v(
+                          "\n                  Checking for new thumbnails periodically...\n              "
+                        )
+                      ]
+                    : [
+                        _c("img", {
+                          attrs: { src: _vm.selectedThumbUrl, alt: "" }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "btn btn-default btn-primary inline-flex",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                _vm.isOpen = !_vm.isOpen
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                      Change Thumbnail\n                  "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("thumbnail-picker", {
+                          attrs: { open: _vm.isOpen, uuid: _vm.uuid },
+                          on: {
+                            close: function($event) {
+                              _vm.isOpen = false
+                            }
+                          },
+                          model: {
+                            value: _vm.value,
+                            callback: function($$v) {
+                              _vm.value = $$v
+                            },
+                            expression: "value"
+                          }
+                        })
+                      ]
+                ]
+              : _c("div", [_vm._v("No Video available")])
+          ],
+          2
+        )
+      ])
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
