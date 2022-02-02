@@ -193,13 +193,13 @@ export default {
         console.info('mounted');
         setInterval(function () {
             const img = new Image;
-            img.src = helpers.thumbUrl(this.uuid, this.value);
             img.onerror = function() {
                 this.thumbsSuccess = false;
             };
             img.onload = function () {
                 this.thumbsSuccess = true;
             }
+            img.src = helpers.thumbUrl(this.uuid, this.value);
         }, 5000);
     this.registerDependencyWatchers(this.$root, function() {
         this.updateDependencyStatus();

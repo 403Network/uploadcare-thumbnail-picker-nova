@@ -697,13 +697,13 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
         console.info('mounted');
         setInterval(function () {
             var img = new Image();
-            img.src = __WEBPACK_IMPORTED_MODULE_3__helpers__["a" /* default */].thumbUrl(this.uuid, this.value);
             img.onerror = function () {
                 this.thumbsSuccess = false;
             };
             img.onload = function () {
                 this.thumbsSuccess = true;
             };
+            img.src = __WEBPACK_IMPORTED_MODULE_3__helpers__["a" /* default */].thumbUrl(this.uuid, this.value);
         }, 5000);
         this.registerDependencyWatchers(this.$root, function () {
             this.updateDependencyStatus();
