@@ -194,7 +194,7 @@ export default {
   },
     mounted () {
         console.info('mounted');
-        setInterval(function () {
+        setInterval(() => {
             if (!this.uuid) {
                 return;
             }
