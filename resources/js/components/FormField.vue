@@ -71,6 +71,9 @@ export default {
     watch: {
         uuid: {
             async handler (to, from) {
+                if (!from) {
+                    this.ready = true;
+                }
                 if (to && this.ready) {
                     this.thumbsReady = false;
                     this.thumbsSuccess = false;

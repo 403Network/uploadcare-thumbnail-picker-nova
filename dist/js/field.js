@@ -549,29 +549,33 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                         while (1) {
                             switch (_context.prev = _context.next) {
                                 case 0:
+                                    if (!from) {
+                                        this.ready = true;
+                                    }
+
                                     if (!(to && this.ready)) {
-                                        _context.next = 8;
+                                        _context.next = 9;
                                         break;
                                     }
 
                                     this.thumbsReady = false;
                                     this.thumbsSuccess = false;
-                                    _context.next = 5;
+                                    _context.next = 6;
                                     return Nova.request({
                                         url: '/nova-vendor/FourZeroThree/UploadcareThumbnailPicker/thumb-trigger/' + this.uuid,
                                         method: 'get'
                                     });
 
-                                case 5:
+                                case 6:
                                     _ref2 = _context.sent;
                                     data = _ref2.data;
 
                                     this.thumbsReady = true;
 
-                                case 8:
+                                case 9:
                                     this.ready = true;
 
-                                case 9:
+                                case 10:
                                 case 'end':
                                     return _context.stop();
                             }
